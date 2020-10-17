@@ -9,6 +9,14 @@ class FullPost extends Component {
     }
 
     componentDidMount () {
+      this.loadData()
+    }
+
+    componentDidUpdate() {
+        this.loadData()
+    }
+
+    loadData() {
         console.log('this.props in update in fullposts=>  ',this.props)
         if ( this.props.match.params.id ) {
             if ( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id) ) {
@@ -18,7 +26,7 @@ class FullPost extends Component {
                         this.setState( { loadedPost: response.data } );
                     } );
             }
-        }
+        } 
     }
 
     deletePostHandler = () => {
